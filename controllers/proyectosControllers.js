@@ -31,6 +31,7 @@ exports.nuevoProyecto = async (req, res) => {
     }else{
         //si no hay errores
         //inserta en la base de datos
+        // const url = slug(nombre).toLowerCase(); hacemos la url en el beforeCreate del hook
         const proyecto = await Proyectos.create({ nombre });
         res.redirect('/');
             // .then(() => console.log('Insertado Correctamente')) esta es la fomra de agregar sin el async await
