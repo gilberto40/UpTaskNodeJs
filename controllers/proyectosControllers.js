@@ -8,9 +8,11 @@ exports.proyectosHome = async (req,res) => {
     });
 };
 
-exports.formularioProyecto = (req, res) => {
+exports.formularioProyecto = async(req, res) => {
+    const proyectos = await Proyectos.findAll();
     res.render('nuevoProyecto', {
-        nombrePagina: 'Nuevo Proyecto'
+        nombrePagina: 'Nuevo Proyecto',
+        proyectos
     })
 };
 
@@ -18,6 +20,7 @@ exports.nuevoProyecto = async (req, res) => {
     // acceder al valor y mostrarlo en la consola nota: en node lo que se manda a la consola sale en la terminal
     // console.log(req.body);
     //validamos el formulario //hacemos uso del Destructuring de JS
+    const proyectos = await Proyectos.findAll();
     const {nombre} = req.body;
     let errores = [];
     if(!nombre){
@@ -40,4 +43,20 @@ exports.nuevoProyecto = async (req, res) => {
             // .catch(error => console.log(error))
     }
 };
+
+exports.proyectoUrl = async(req, res, next) => {
+    const proyectos = await Proyectos.findAll();
+    const proyecto = await Proyectos.findOne({
+        where: {
+            url: req.params.url
+        }
+    })
+    if(!proyecto) return next();
+    res.render('tareas', {
+        nombrePagina: 'Tareas del proyecto',
+        proyecto,
+        proyectos
+    })
+
+}
 
