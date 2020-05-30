@@ -13,5 +13,10 @@ module.exports = function(){
     proyectosController.nuevoProyecto);
     //listar proyectos
     router.get('/proyectos/:url', proyectosController.proyectoUrl);
+    //editar proyectos
+    router.get('/proyecto/editar/:id', proyectosController.proyectoEditar);
+    router.post('/nuevo-proyecto/:id', 
+    body('nombre').not().isEmpty().trim().escape(),
+    proyectosController.actualizarProyecto);
     return router;
 }
