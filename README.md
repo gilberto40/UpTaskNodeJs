@@ -1,4 +1,3 @@
 # UpTaskNodeJs
-creacion de sitio web con NodeJs, MySql, Express bajo el patron de diseño MVC
-el sitio web es un administrador de proyectos;
-le falta el node_module y el packge-lock.json, al copiarlo ejecutar en la terminal npm install
+creacion de sitio web (administrador de proyectos) con NodeJs, MySql, Express bajo el patron de diseño MVC usando el ORM Sequalize y de templates PUG
+el sitio cuenta con un crud completo tanto para los proyectos como para las tareas del mismo
